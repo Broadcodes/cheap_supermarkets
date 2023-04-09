@@ -12,8 +12,10 @@ class CreateSupermarketsTable extends Migration
             $table->id();
             $table->string('name', 150)->nullable(false);
             $table->string('address')->nullable(false);
+            $table->string('civic')->nullable()->default('SNC');
             $table->string('city', 100);
-            $table->unique('name', 'address');
+            $table->integer('postal_code');
+            $table->unique(['name', 'address', 'civic', 'city']);
             $table->timestamps();
         });
     }
